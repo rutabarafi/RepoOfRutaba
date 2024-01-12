@@ -21,6 +21,14 @@ void Cuberoot();
 void nthroot();
 void Factorial();
 void Absolutevalue();
+void Logarithm ();
+void Naturallogarithm ();
+void Custombaselogarithm();
+void Mean();
+void Median();
+void Mode();
+void Standarddeviation();
+void Variance();
 
 int main() {
     //Starting With Welcome Message..
@@ -48,6 +56,14 @@ int main() {
     printf("Enter 14 for nth root \n");
     printf("Enter 15 for Factorial \n");
     printf("Enter 16 for Absolute value \n");
+    printf("Enter 17 for Logarithm \n");
+    printf("Enter 18 for Natural logarithm \n");
+    printf("Enter 19 for Custom base logarithm \n");
+    printf("Enter 20 for Mean \n");
+    printf("Enter 21 for Median \n");
+    printf("Enter 22 for Mode \n");
+    printf("Enter 23 for Standard deviation \n");
+    printf("Enter 24 for Variance \n");
 
 //Using loop and Switch statement for performing an selecting operations..
 
@@ -102,6 +118,30 @@ int main() {
             case 16:
                 Absolutevalue();
                 break;   
+            case 17:
+                Logarithm();
+                break;
+            case 18:
+                Naturallogarithm();
+                break;
+            case 19:
+                Custombaselogarithm();
+                break;
+	    case 20:
+                Mean();
+                break;
+            case 21:
+                Median();
+                break;
+            case 22:
+                Mode();
+                break;   
+            case 23:
+                Standarddeviation();
+                break;
+            case 24:
+                Variance();
+                break;
             case 0:
                 exit(0);
             default:
@@ -253,4 +293,159 @@ void Absolutevalue() {
     scanf ("%d", &num);    
     n = abs (num);  
     printf ("\n The absolute value of %d is %d. ", num, n);  
+}
+
+//Logarithm..Taking Input user and than calculate the logarithm...
+void Logarithm () {
+    double num, result;
+    printf("Enter a number for logarithm (base 10): ");
+    scanf("%lf", &num);
+    result = log10(num);
+    printf("Logarithm (base 10) of %lf is %lf\n", num, result);
+}
+
+//NaturalLogarithm..Taking Input user and than calculate the Naturallogarithm...
+void Naturallogarithm () {
+    double num, result;
+    printf("Enter a number for natural logarithm (base e): ");
+    scanf("%lf", &num);
+    result = log(num);
+    printf("Natural Logarithm (base e) of %lf is %lf\n", num, result);
+}
+
+//Custombaselogarithm..Taking Input user and than calculate the Custombaselogarithm...
+void Custombaselogarithm() {
+    double num, base, result;
+    printf("Enter a number: ");
+    scanf("%lf", &num);
+    printf("Enter the base: ");
+    scanf("%lf", &base);
+    result = log(num) / log(base);
+    printf("Logarithm (base %lf) of %lf is %lf\n", base, num, result);
+}
+
+//Mean..Taking Input user and than calculate the mean...
+void Mean() {
+    int size;
+    printf("Enter the size of the array: ");
+    scanf("%d", &size);
+    if (size <= 0) {
+        printf("Invalid array size.\n");
+        return;
+    }
+    int arr[size];
+    printf("Enter the elements of the array:\n");
+    for (int i = 0; i < size; i++) {
+        scanf("%d", &arr[i]);
+    }
+    if (size <= 0) {
+        printf("Cannot calculate mean for an empty array.\n");
+        return;
+    }
+    int sum = 0;
+    for (int i = 0; i < size; i++) {
+        sum += arr[i];
+    }
+    double mean = (double)sum / size;
+    printf("Mean: %f\n", mean);
+}
+
+//Median..Taking Input user and than calculate the median...
+void Median() {
+    int num1, num2, num3;
+    printf("Enter the first number: ");
+    scanf("%d", &num1);
+    printf("Enter the second number: ");
+    scanf("%d", &num2);
+    printf("Enter the third number: ");
+    scanf("%d", &num3);
+    
+    int median;
+    if ((num1 >= num2 && num1 <= num3) || (num1 <= num2 && num1 >= num3))
+        median = num1;
+    else if ((num2 >= num1 && num2 <= num3) || (num2 <= num1 && num2 >= num3))
+        median = num2;
+    else
+        median = num3;
+    printf("Median: %d\n", median);
+}
+
+//Mode..Taking Input user and than calculate the mode...
+void Mode() {
+    int num1, num2, num3;
+    printf("Enter the first number: ");
+    scanf("%d", &num1);
+    printf("Enter the second number: ");
+    scanf("%d", &num2);
+    printf("Enter the third number: ");
+    scanf("%d", &num3);
+    int mode;
+    if (num1 == num2 && num1 == num3) {
+        printf("No mode (all numbers are equal).\n");
+        return;
+    } else if (num1 == num2 || num1 == num3) {
+        mode = num1;
+    } else if (num2 == num3) {
+        mode = num2;
+    } else {
+        printf("No mode (all numbers are distinct).\n");
+        return;
+    }
+    printf("Mode: %d\n", mode);
+}
+
+//Standarddeviation..Taking Input user and than calculate the standarddeviation...
+void Standarddeviation() {
+    int size;
+    printf("Enter the size of the array: ");
+    scanf("%d", &size);
+    if (size <= 1) {
+        printf("Invalid array size for standard deviation.\n");
+        return;
+    }
+    int arr[size];
+    printf("Enter the elements of the array:\n");
+    for (int i = 0; i < size; i++) {
+        scanf("%d", &arr[i]);
+    }
+    double mean = 0.0;
+    for (int i = 0; i < size; i++) {
+        mean += arr[i];
+    }
+//From the mean Calculate the sum of squaredifference..
+    mean /= size;
+    double sumSquaredDiff = 0.0;
+    for (int i = 0; i < size; i++) {
+        sumSquaredDiff += pow(arr[i] - mean, 2);
+    }
+    double stdDeviation = sqrt(sumSquaredDiff / size);
+    printf("Standard Deviation: %f\n", stdDeviation);
+}
+
+//Variance..Taking Input user and than calculate the variance...
+void Variance() {
+    int size;
+    printf("Enter the size of the array: ");
+    scanf("%d", &size);
+    if (size <= 1) {
+        printf("Invalid array.\n");
+        return;
+    }
+    int arr[size];
+    printf("Enter the elements of the array:\n");
+    for (int i = 0; i < size; i++) {
+        scanf("%d", &arr[i]);
+    }
+    double mean = 0.0;
+    for (int i = 0; i < size; i++) {
+        mean += arr[i];
+    }
+//From the mean Calculate the sum of squaredifference.. 
+    mean /= size;
+    double sumSquaredDiff = 0.0;
+    for (int i = 0; i < size; i++) {
+        sumSquaredDiff += pow(arr[i] - mean, 2);
+    }
+    double variance = sumSquaredDiff / size;
+    printf("Variance: %f\n", variance);
 }
