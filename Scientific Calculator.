@@ -15,6 +15,12 @@ void Tangent();
 void Arcsine();
 void Arccosine();
 void Arctangent();
+void Exponentiation();
+void Squareroot();
+void Cuberoot();
+void nthroot();
+void Factorial();
+void Absolutevalue();
 
 int main() {
     //Starting With Welcome Message..
@@ -36,6 +42,13 @@ int main() {
     printf("Enter 8 for Arcsine \n");
     printf("Enter 9 for Arccosine \n");
     printf("Enter 10 for Arctangent  \n");
+    printf("Enter 11 for Exponentiation \n");
+    printf("Enter 12 for Square root \n");
+    printf("Enter 13 for Cube root \n");
+    printf("Enter 14 for nth root \n");
+    printf("Enter 15 for Factorial \n");
+    printf("Enter 16 for Absolute value \n");
+
 //Using loop and Switch statement for performing an selecting operations..
 
         while (1) {
@@ -71,6 +84,24 @@ int main() {
             case 10:
                 Arctangent();
                 break;
+            case 11:
+                Exponentiation();
+                break;
+            case 12:
+                Squareroot();
+                break;
+            case 13:
+                Cuberoot();
+                break;
+            case 14:
+                nthroot();
+                break;
+            case 15:
+                Factorial();
+                break;
+            case 16:
+                Absolutevalue();
+                break;   
             case 0:
                 exit(0);
             default:
@@ -158,4 +189,68 @@ void Arctangent() {
     double value;
     scanf("%lf", &value);
     printf("The arctangent of %lf is %lf degrees\n", value, atan(value) * 180 / M_PI);
+}
+
+//Taking an Input from the user and calculate exponentiation..
+void Exponentiation() {
+	double num;
+	printf("Enter the number: ");
+	scanf("%lf",&num);
+	double res = exp(num);
+	printf("The exponentiation of %lf is %lf", num, res);
+}
+
+//Taking an Input from the user and calculate squareroot..
+void Squareroot() {
+    double b;
+    printf("Enter the number you want the square root of : ");
+    scanf("%lf",&b);
+    double s = sqrt(b);
+    printf("The square root of %lf is %lf",b,s);
+}
+
+//Taking an Input from the user and calculate cuberoot...
+void Cuberoot() {
+    double num, cubeRoot;
+    printf("Enter the number you want the cube root of : ");
+    scanf("%lf" ,&num);
+    cubeRoot =  cbrt(num);
+    printf("The cube root of %lf is %lf", num, cubeRoot);
+}
+
+//Taking an Input from the user and calculate nthroot..
+void nthroot() {
+	double number;
+    int n;
+    printf("Enter the number: ");
+    scanf("%lf", &number);
+    printf("Enter the value of n: ");
+    scanf("%d", &n);
+    if (number < 0 && n % 2 == 0) {
+        printf("Cannot calculate even-root of a negative number.\n");
+        return;
+    }
+    double result = pow(number, 1.0 / n);
+    printf("%dth root of %.2f is: %.2f\n", n, number, result);
+}
+
+//Taking an Input from the user and calculate factorial..
+void Factorial(){
+    int n,factorial;
+    printf("Enter the number you want the factorial of: ");
+    scanf("%d",&n);
+    factorial=1;
+    for(int i=1;i<=n;i++){
+        factorial=factorial*i; 
+    }
+    printf("\nFactorial of %d is %d",n,factorial);
+}
+
+//Taking an Input from the user and calculate absolutevalue..
+void Absolutevalue() {
+	   int num, n; 
+    printf (" Enter a number to display the absolute value: ");  
+    scanf ("%d", &num);    
+    n = abs (num);  
+    printf ("\n The absolute value of %d is %d. ", num, n);  
 }
