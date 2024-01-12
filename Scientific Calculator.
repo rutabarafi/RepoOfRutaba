@@ -577,3 +577,97 @@ void floorAndCeil() {
     cVal = ceil(val);
     printf("floor value: %f \n ceil value: %f \n", fVal, cVal);
 }
+//Addition of two complex numbers
+void Additionofcomplexnumbers() {
+	float r1, i1, r2, i2;
+
+    // Taking Input user of complex number..
+    printf("Enter the real and imaginary number of the first complex number: ");
+    scanf("%f %f", &r1, &i1);
+
+    printf("Enter the real and imaginary number of the second complex number: ");
+    scanf("%f %f", &r2, &i2);
+	
+    float real_sum = r1 + r2;
+    float imag_sum = i1 + i2;
+    printf("Sum of complex numbers: %.2f + %.2fi\n", real_sum, imag_sum);
+    
+}
+
+
+// Subtraction of two complex numbers..
+void Subtractionofcomplexnumbers() {
+	float r1, i1, r2, i2;
+
+    // Taking Input User of complex number..
+    printf("Enter the real and imaginary number of the first complex number: ");
+    scanf("%f %f", &r1, &i1);
+
+    printf("Enter the real and imaginary number of the second complex number: ");
+    scanf("%f %f", &r2, &i2);
+	
+    float real_diff = r1 - r2;
+    float imag_diff = i1 - i2;
+    printf("Difference of complex numbers: %.2f + %.2fi\n", real_diff, imag_diff);
+    
+
+}
+
+// Multiplication of two complex numbers...
+void Multiplicationofcomplexnumbers() {
+	float r1, i1, r2, i2;
+
+    // Taking Input User of complex number...
+    printf("Enter the real and imaginary number of the first complex number: ");
+    scanf("%f %f", &r1, &i1);
+
+    printf("Enter the real and imaginary number of the second complex number: ");
+    scanf("%f %f", &r2, &i2);
+	
+    float real_product = (r1 * r2) - (i1 * i2);
+    float imag_product = (r1 * i2) + (i1 * r2);
+    printf("Product of complex numbers: %.2f + %.2fi\n", real_product, imag_product);
+    
+
+}
+
+// Division of two complex numbers...
+void Divisionofcomplexnumbers() {
+	float r1, i1, r2, i2;
+
+    // Taking Input user of complex number.. 
+    printf("Enter the real and imaginary number of the first complex number: ");
+    scanf("%f %f", &r1, &i1);
+
+    printf("Enter the real and imaginary number of the second complex number: ");
+    scanf("%f %f", &r2, &i2);
+	
+    float denominator = (r2 * r2) + (i2 * i2);
+
+    if (denominator == 0) {
+        printf("Divide by zero is invalid.\n");
+        return;
+    }
+
+    float real_quotient = ((r1 * r2) + (i1 * i2)) / denominator;
+    float imag_quotient = ((i1 * r2) - (r1 * i2)) / denominator;
+
+    printf("Quotient of complex numbers: %.2f + %.2fi\n", real_quotient, imag_quotient);
+    
+}
+
+// finding the conjugate of a complex number...
+void Conjugateofacomplexnumber() {
+	float r1, i1, r2, i2;
+
+    // Taking input of complex numbers
+    printf("Enter the real and imaginary number of the first complex number: ");
+    scanf("%f %f", &r1, &i1);
+
+    printf("Enter the real and imaginary number of the second complex number: ");
+    scanf("%f %f", &r2, &i2);
+
+	
+    printf("Conjugate of the complex number: %.2f + %.2fi\n", r1, -i1);
+    
+}
