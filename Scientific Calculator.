@@ -45,6 +45,11 @@ void Multiplicationofmatrix();
 void Transpositionofamatrix();
 void Determinantofamatrix();
 void Inverseofamatrix();
+void Binaryaddition();
+void Binarysubtraction();
+void Binarymultiplication();
+void Binarydivision();
+void Bitwiseoperator();
 
 int main() {
     //Starting With Welcome Message..
@@ -96,7 +101,11 @@ int main() {
     printf("Enter 38 for Transposition of matrix \n");
     printf("Enter 39 for Determinant of a matrix \n");
     printf("Enter 40 for Inverse of a matrix \n");
-
+    printf("Enter 41 for Binary addition \n");
+    printf("Enter 42 for Binary subtraction \n");
+    printf("Enter 43 for Binary multiplication \n");
+    printf("Enter 44 for Binary division \n");
+    printf("Enter 45 for Bitwise operator \n");
 
 
 //Using loop and Switch statement for performing an selecting operations..
@@ -225,6 +234,21 @@ int main() {
 	 case 40:
 		Inverseofamatrix();
 		break;
+        case 41:
+		Binaryaddition();
+		break;
+	case 42:
+		Binarysubtraction();
+		break;
+	case 43:
+		Binarymultiplication();   
+		break;
+	case 44:
+		Binarydivision();
+		break;
+	case 45:
+		Bitwiseoperator();
+		break; 
             case 0:
                 exit(0);
             default:
@@ -913,4 +937,158 @@ void Inverseofamatrix() {
         }
         printf("\n");
     }
+}
+void Binaryaddition() {
+ 
+    long binary1, binary2;
+    int i = 0, remainder = 0, sum[20];
+ 
+    printf("Enter the first binary number: ");
+    scanf("%ld", &binary1);
+    printf("Enter the second binary number: ");
+    scanf("%ld", &binary2);
+    while (binary1 != 0 || binary2 != 0)
+    {
+        sum[i++] =(binary1 % 10 + binary2 % 10 + remainder) % 2;
+        remainder =(binary1 % 10 + binary2 % 10 + remainder) / 2;
+        binary1 = binary1 / 10;
+        binary2 = binary2 / 10;
+    }
+    if (remainder != 0)
+        sum[i++] = remainder;
+    --i;
+    printf("Sum of two binary numbers: ");
+    while (i >= 0)
+        printf("%d", sum[i--]);
+    
+}
+
+void Binarysubtraction(){
+            
+            int numa[8]={0},numb[8]={0},diff[8]={0};
+            
+            printf("\tSUBTRACTION USING TWO'S COMPLEMENT");
+            printf("\nEnter two 8-bit binary numbers\n");
+
+            printf("\nEnter first number: ");
+            for(int i = 0; i<8; i++){
+                        scanf("%d",&numa[i]);
+            }
+            printf("\nEnter second number: ");
+            for(int i = 0; i<8; i++){
+                        scanf("%d",&numb[i]);
+            }
+
+            for(int i = 7; i >= 0; i--){
+                        diff[i] = numa[i] - numb[i];
+                        if(diff[i] < 0){
+                                    numa[i-1] = numa[i-1] - 1;
+                        }
+                        diff[i] = fabs(diff[i]%2);
+            }
+            printf("\nDifference is: ");
+            for(int i = 0; i<8; i++){
+                        printf("%d",diff[i]);
+            }
+
+}
+
+void Binarymultiplication() {
+    int numa[4] = {0}, numb[4] = {0}, product[8] = {0};
+
+    printf("\tMULTIPLICATION OF TWO 4-BIT BINARY NUMBERS");
+    printf("\nEnter two 4-bit binary numbers\n");
+
+    printf("Enter first number: ");
+    for (int i = 3; i >= 0; i--) {
+        scanf("%1d", &numa[i]);
+    }
+
+    printf("Enter second number: ");
+    for (int i = 3; i >= 0; i--) {
+        scanf("%1d", &numb[i]);
+    }
+
+    for (int i = 0; i < 4; i++) {
+        for (int j = 0; j < 4; j++) {
+            product[i + j] += numa[i] * numb[j];
+        }
+    }
+
+    // Perform carry
+    for (int i = 0; i < 7; i++) {
+        if (product[i] > 1) {
+            product[i + 1] += product[i] / 2;
+            product[i] %= 2;
+        }
+    }
+
+    printf("\nProduct is: ");
+    for (int i = 7; i >= 0; i--) {
+        printf("%d", product[i]);
+    }
+}
+
+void Binarydivision() {
+    int numerator[4] = {0}, denominator[4] = {0}, quotient[4] = {0}, remainder[4] = {0};
+
+    printf("\tDIVISION OF TWO 4-BIT BINARY NUMBERS");
+    printf("\nEnter numerator (dividend): ");
+    for (int i = 3; i >= 0; i--) {
+        scanf("%1d", &numerator[i]);
+    }
+
+    printf("Enter denominator (divisor): ");
+    for (int i = 3; i >= 0; i--) {
+        scanf("%1d", &denominator[i]);
+    }
+
+    // Initialize remainder with the numerator
+    for (int i = 0; i < 4; i++) {
+        remainder[i] = numerator[i];
+    }
+
+    // Perform division
+    for (int i = 3; i >= 0; i--) {
+        quotient[i] = remainder[i] / denominator[3];  // MSB of denominator
+        if (quotient[i] == 1) {
+            for (int j = 0; j < 4; j++) {
+                remainder[i - j] -= denominator[j];
+            }
+        }
+
+        // Shift remainder to the left
+        for (int j = 0; j < 3; j++) {
+            remainder[j] = remainder[j + 1];
+        }
+        remainder[3] = numerator[i - 1];
+    }
+
+    printf("Quotient is: ");
+    for (int i = 3; i >= 0; i--) {
+        printf("%d", quotient[i]);
+    }
+
+    printf("\nRemainder is: ");
+    for (int i = 3; i >= 0; i--) {
+        printf("%d", remainder[i]);
+    }
+}
+
+void Bitwiseoperator() {
+	
+	unsigned char a = 5, b = 9;
+	
+	printf("a = %d, b = %d\n", a, b);
+	printf("a&b = %d\n", a & b);
+
+	printf("a|b = %d\n", a | b);
+	
+	printf("a^b = %d\n", a ^ b);
+
+	printf("~a = %d\n", a = ~a);
+		
+	printf("b<<1 = %d\n", b << 1);
+
+	printf("b>>1 = %d\n", b >> 1);
 }
