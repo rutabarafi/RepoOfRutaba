@@ -50,6 +50,11 @@ void Binarysubtraction();
 void Binarymultiplication();
 void Binarydivision();
 void Bitwiseoperator();
+void unitconverter();
+void temperatureconverter();
+void meterintofeet();
+void polarToRectangular();
+void rectangulartopolar();
 
 int main() {
     //Starting With Welcome Message..
@@ -106,7 +111,11 @@ int main() {
     printf("Enter 43 for Binary multiplication \n");
     printf("Enter 44 for Binary division \n");
     printf("Enter 45 for Bitwise operator \n");
-
+    printf("Enter 46 for unit converter \n");
+    printf("Enter 47 for temperature converter \n");
+    printf("Enter 48 for meter into feet \n");
+    printf("Enter 49 for polar to rectangular \n");
+    printf("Enter 50 for  rectangular to polar \n"); 
 
 //Using loop and Switch statement for performing an selecting operations..
 
@@ -248,6 +257,21 @@ int main() {
 		break;
 	case 45:
 		Bitwiseoperator();
+		break; 
+       	case 46:
+		unitconverter();
+		break;
+	case 47:
+		temperatureconverter();
+		break;
+	case 48:
+		meterintofeet();
+		break;
+	case 49:
+		polarToRectangular();
+		break;
+	case 50:
+		rectangulartopolar();
 		break; 
             case 0:
                 exit(0);
@@ -1091,4 +1115,57 @@ void Bitwiseoperator() {
 	printf("b<<1 = %d\n", b << 1);
 
 	printf("b>>1 = %d\n", b >> 1);
+}
+void unitconverter(){
+	float c,f;
+	printf("\n Enter the temperature in the Ferenheit Scale");
+	scanf("%f" ,&f);
+	c = (f - 32) * 5/9;
+	printf("\n The temperature in celcius is : %f",c);
+}
+void temperatureconverter(){
+	float c,f;
+	printf("\n Enter the temperature in the Ferenheit Scale");
+	scanf("%f" ,&f);
+	f = c * 9/5 + 32;
+	printf("\n The temperature in celcius is : %f",f);
+}
+void meterintofeet(){
+	float m,f;
+	printf("Give length in meters: ");
+	scanf("%f",&m);
+	
+	f = 3.28 * m;
+	printf("The distance in feet is as : %f" , f);
+}
+
+
+// Function to convert Polar coordinates to Rectangular coordinates
+void polarToRectangular() {
+    double r, theta, x, y;
+
+    // Taking user input for Polar coordinates
+    printf("Enter Polar coordinates (r, theta in radians): ");
+    scanf("%lf %lf", &r, &theta);
+
+    // Convert polar to rectangular
+    x = r * cos(theta);
+    y = r * sin(theta);
+
+    printf("Rectangular coordinates (x, y): (%.2f, %.2f)\n", x, y);
+}
+
+// Function to convert Rectangular coordinates to Polar coordinates
+void rectangulartopolar() {
+    double x, y, r, theta;
+
+    // Taking user input for Rectangular coordinates
+    printf("Enter Rectangular coordinates (x, y): ");
+    scanf("%lf %lf", &x, &y);
+
+    // Convert rectangular to polar
+    r = sqrt(x*x + y*y);
+    theta = atan2(y, x);
+
+    printf("Polar coordinates (r, theta): (%.2f, %.2f radians)\n", r, theta);
 }
