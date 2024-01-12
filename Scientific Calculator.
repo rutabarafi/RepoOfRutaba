@@ -29,6 +29,17 @@ void Median();
 void Mode();
 void Standarddeviation();
 void Variance();
+void Modulus ();
+void Percentagecalculation();
+void GCD ();
+void LCM ();
+void floorAndCeil();
+void Additionofcomplexnumbers();
+void Subtractionofcomplexnumbers();
+void Multiplicationofcomplexnumbers();
+void Divisionofcomplexnumbers();
+void Conjugateofacomplexnumber();
+
 
 int main() {
     //Starting With Welcome Message..
@@ -64,6 +75,16 @@ int main() {
     printf("Enter 22 for Mode \n");
     printf("Enter 23 for Standard deviation \n");
     printf("Enter 24 for Variance \n");
+    printf("Enter 25 for Module \n");
+    printf("Enter 26 for Percentage calculation \n");
+    printf("Enter 27 for GCD \n");
+    printf("Enter 28 for LCM \n");
+    printf("Enter 29 for floorAndCeil \n");
+    printf("Enter 30 for Addition of complex numbers \n");
+    printf("Enter 31 for Subtraction of complex numbers \n");
+    printf("Enter 32 for Multiplication of complex numbers \n");
+    printf("Enter 33 for Division of complex numbers \n");
+    printf("Enter 34 for Conjugate of a complex number \n");
 
 //Using loop and Switch statement for performing an selecting operations..
 
@@ -71,77 +92,107 @@ int main() {
         printf("\n\nEnter the operation you want to do: ");
         scanf("%d", &choice);
         switch (choice) {
-            case 1:
+           case 1:
                 addition();
                 break;
-            case 2:
+           case 2:
                 subtraction();
                 break;
-            case 3:
+           case 3:
                 multiplication();
                 break;
-            case 4:
+           case 4:
                 division();
-            case 5:
+           case 5:
                 Sine();
                 break;
-            case 6:
+           case 6:
                 Cosine();
                 break;
-            case 7:
+           case 7:
                 Tangent();
                 break;
-            case 8:
+           case 8:
                 Arcsine();
                 break;
-            case 9:
+           case 9:
                 Arccosine();
                 break;
-            case 10:
+           case 10:
                 Arctangent();
                 break;
-            case 11:
+           case 11:
                 Exponentiation();
                 break;
-            case 12:
+           case 12:
                 Squareroot();
                 break;
-            case 13:
+           case 13:
                 Cuberoot();
                 break;
-            case 14:
+           case 14:
                 nthroot();
                 break;
-            case 15:
+           case 15:
                 Factorial();
                 break;
-            case 16:
+           case 16:
                 Absolutevalue();
                 break;   
-            case 17:
+           case 17:
                 Logarithm();
                 break;
-            case 18:
+           case 18:
                 Naturallogarithm();
                 break;
-            case 19:
+           case 19:
                 Custombaselogarithm();
                 break;
-	    case 20:
+	   case 20:
                 Mean();
                 break;
-            case 21:
+           case 21:
                 Median();
                 break;
-            case 22:
+           case 22:
                 Mode();
                 break;   
-            case 23:
+           case 23:
                 Standarddeviation();
                 break;
-            case 24:
+           case 24:
                 Variance();
                 break;
+           case 25:
+                Modulus();
+                break;
+           case 26:
+                Percentagecalculation();
+                break;
+           case 27:
+                GCD();
+                break;   
+	   case 28:
+                LCM();
+                break;
+           case 29:
+            	floorAndCeil();
+                break;
+	    case 30:
+                Additionofcomplexnumbers();
+                break;
+            case 31:
+                Subtractionofcomplexnumbers();
+                break;
+            case 32:
+                Multiplicationofcomplexnumbers();
+                break;
+            case 33:
+                Divisionofcomplexnumbers();
+                break;
+            case 34:
+                Conjugateofacomplexnumber();
+                break;	
             case 0:
                 exit(0);
             default:
@@ -448,4 +499,80 @@ void Variance() {
     }
     double variance = sumSquaredDiff / size;
     printf("Variance: %f\n", variance);
+}
+
+//Modulus..
+void Modulus() {
+   printf("Enter the numbers: ");
+    int a,b;
+    scanf("%d%d",&a,&b);
+    printf("The modulus of a and b is %d\n",a%b);
+}
+
+//Percentagecalculation...
+void Percentagecalculation() {
+    double total, obtained;
+    printf("Enter the total marks: ");
+    scanf("%lf", &total);
+    printf("Enter the obtained marks: ");
+    scanf("%lf", &obtained);
+    double percentage = (obtained / total) * 100.0;
+    printf("Percentage: %lf%%\n", percentage);
+}
+
+//GCD...
+void GCD() {
+    int a, b, c;
+    printf("Enter the value for a: ");
+    scanf("%d", &a);
+    printf("Enter the value for b: ");
+    scanf("%d", &b);
+    printf("Enter the value for c: ");
+    scanf("%d", &c);
+    int smallest;
+    if (a < b && a < c) {
+        smallest = a;
+    } else if (b < a && b < c) {
+        smallest = b;
+    } else {
+        smallest = c;
+    }
+    int gcd;
+    for (int i = smallest; i >= 1; i--) {
+        if (a % i == 0 && b % i == 0 && c % i == 0) {
+            gcd = i;
+            break;
+        }
+    }
+    printf("GCD: %d\n", gcd);
+}
+
+//LCM...
+void LCM() {
+    int a, b, c;
+    printf("Enter the value for a: ");
+    scanf("%d", &a);
+    printf("Enter the value for b: ");
+    scanf("%d", &b);
+    printf("Enter the value for c: ");
+    scanf("%d", &c);
+    int lcm;
+    for (int i = 1; i <= a * b * c; i++) {
+        if (i % a == 0 && i % b == 0 && i % c == 0) {
+            lcm = i;
+            break;
+        }
+    }
+    printf("LCM: %d\n", lcm);
+}
+
+//FloorAndCeil...
+void floorAndCeil() {
+    float val;
+    float fVal, cVal;
+    printf("Enter a float value: ");
+    scanf("%f", &val);
+    fVal = floor(val);
+    cVal = ceil(val);
+    printf("floor value: %f \n ceil value: %f \n", fVal, cVal);
 }
